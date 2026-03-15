@@ -7,4 +7,6 @@
 
 <Navbar />
 
-{@render children()}
+<div class="bg-red-500">
+  {@render children()}
+</div>

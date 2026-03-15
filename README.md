@@ -1,65 +1,20 @@
-# Svelte library
+Quick setup
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+This project uses `bun` but you can use package manager of your preference (tested with `npm` and `yarn`)
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+Run these commands:
 
-## Creating a project
+- `bun install`
+- `bun run dev`
 
-If you're seeing this, you've probably already done this step. Congrats!
+Q: How is authored CSS transformed into final CSS in the browser?
 
-```sh
-# create a new project in the current directory
-npx sv create
+A: While browser is constructing DOM of a page it encounters a `<link>` element in the `<head>` of the document referencing CSS style sheet e.g. `layout.css`. Browser then sends a request for this recource which returns CSS content.  
+The CSS bytes are converted into characters, then tokens, then nodes. Final step is linking them into a tree structure called CSSOM (CSS Object Model)  
+Browser goes from top to the bottom. First it applies all styles from body to its children. After it evaluates styles of children it updates styles accordingly e.g. child div will have different color than the one body specified.
 
-# create a new project in my-app
-npx sv create my-app
-```
 
-To recreate this project with the same configuration:
+Q: Where to find the generated CSS and corresponding source maps in this project?
 
-```sh
-# recreate this project
-bun x sv@0.12.7 create --template library --types ts --add tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:vercel" devtools-json --install bun zercher-squat-tribute
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```sh
-npm pack
-```
-
-To create a production version of your showcase app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+A: Generated CSS and corresponding source maps can be found by temporarily commenting out `/.svelte-kit` and `.vercel`. Then by searching all files with `a.svelte` you will get something like this `a.svelte-1uha8ag{color:#fff}`.  
+For corresponding source maps search for files ending with `.map`.

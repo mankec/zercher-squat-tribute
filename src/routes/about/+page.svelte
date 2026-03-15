@@ -1,4 +1,4 @@
-<div class="h-screen flex justify-center">
+<div class="h-screen flex justify-center bg-base-200">
   <div class="h-full w-3/5">
 <section class="max-w-4xl mx-auto p-8 space-y-6">
   <h1 class="text-4xl font-bold text-center mb-8">About the Zercher Squat</h1>
@@ -36,3 +36,9 @@
   </section>
   </div>
 </div>
+
+<style>
+  p {
+    color: whitesmoke;
+  }
+</style>

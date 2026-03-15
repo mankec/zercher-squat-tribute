@@ -1,4 +1,4 @@
-<div class="hero bg-base-200 min-h-screen">
+<div class="hero bg-yellow-500 text-red-500 min-h-1/2 w-1/2 underline">
   <div class="hero-content text-center">
     <div class="max-w-md">
       <h1 class="text-5xl font-bold">Greetings stranger!</h1>
@@ -12,3 +12,18 @@
     </div>
   </div>
 </div>
+
+<style>
+  a {
+    text-decoration:underline;
+  }
+
+  div.hero {
+    color: white;
+    background-color: var(--color-base-200);
+    min-height: 100vh;
+    font-style: normal;
+    text-decoration-line: none;
+    width: 100%;
+  }
+</style>
